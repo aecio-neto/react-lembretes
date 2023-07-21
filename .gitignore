@@ -11,6 +11,9 @@
 # production
 /build
 
+#dev 
+notas.md
+
 # misc
 .DS_Store
 .env.local
