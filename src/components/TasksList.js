@@ -6,7 +6,7 @@
 
 import TaskItem from './TaskItem'
 
-  const TaskList = ({ tasks, onDelete, onToggle }) => {
+  const TasksList = ({ tasks, onDelete, onToggle }) => {
     
     return (
       <div>
@@ -18,4 +18,4 @@ import TaskItem from './TaskItem'
   }
 
 
-  export default TaskList
+  export default TasksList

@@ -1,8 +1,10 @@
 import Header from "./components/Header";
-import TaskList from "./components/TasksList";
-import { useState } from "react";
+import TasksList from "./components/TasksList";
+import AddTask from "./components/AddTask";
+import { useState } from "react"; 
 
 function App() {
+  const [showAddTask, setShowAddTask] = useState(false)
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -44,10 +46,18 @@ function App() {
     ))
   }
 
+  // Add Task
+  const addTask = (task) => {
+    const id = Math.floor(Math.random() * 10000) + 1
+    const newTask = { id, ...task }
+    setTasks([...tasks, newTask])
+  }
+
   return (
     <main className="container">
-      <Header message="Valor padrão da mensagem foi alterado. Esse é o novo valor."/>
-      <TaskList tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>
+      <Header onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
+      {showAddTask && <AddTask onAdd={addTask} />}
+      <TasksList tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
     </main>
   );
 }

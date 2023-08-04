@@ -4,22 +4,23 @@ import Button from './Button'
 
 // parei de acompanhar em tasks 47:12
 
-function Header({ title }) { // esse destructuring é o mesmo que props.title
-  const handleClick = () => {
-    console.log('clicou no botão')
-  }
+function Header({ title, onAdd, showAdd }) { // esse destructuring é o mesmo que props.title
 
   return (
     <header className='header'>
       <h1>{title}</h1>
-      <Button color='green' text='Add' onClick={handleClick} />
+      <Button 
+        color={showAdd ? 'red' : 'green'} 
+        text={showAdd ? 'X' : 'Add'} 
+        onClick={onAdd } 
+      />
     </header>
   )
 }
 
 // Define um valor padrão para a propriedade, caso ele não seja passado na importação do componente. 
 Header.defaultProps = {
-  title: "Taks Tracker ",
+  title: "Lembretes",
 }
 //   message: "Esse parágrafo tem um valor padrão, mas na importação um outro valor foi passado."
 
